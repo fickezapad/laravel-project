@@ -17,11 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
+});
 
-Route::get("list-data", [KorisnikController::class, "selectData"]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//layout
+
 Route::get("add-korisnika", [KorisnikController::class, "addKorisnika"]);
-//submit i save
 Route::post("save-korisnika", [KorisnikController::class, "storeKorisnika"]);
+Route::get("list-data", [KorisnikController::class, "selectData"]);
+require __DIR__ . '/auth.php';

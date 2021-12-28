@@ -25,20 +25,25 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($korisnici as $korisnik)
 
-                <tr>
-                    <td>{{$korisnik -> name}}</td>
-                    <td>{{$korisnik -> lastname}}</td>
-                    <td>{{$korisnik -> mobile}}</td>
-                    <td>{{$korisnik -> home}}</td>
-                </tr>
 
-                @endforeach
+                <?php
+
+
+                foreach ($korisnici as $korisnik) : ?>
+
+                    <tr>
+                        <td>{{$korisnik -> name}}</td>
+                        <td>{{$korisnik -> lastname}}</td>
+                        <td>{{$korisnik -> mobile}}</td>
+                        <td>{{$korisnik -> home}}</td>
+                    </tr>
+
+                <?php endforeach; ?>
 
             </tbody>
         </table>
-        <button id="myButton" onclick="window.location='{{ url("home") }}'">Home</button>
+        <button id="myButton" onclick="window.location='{{ url("dashboard") }}'">Dashboard</button>
     </div>
 
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>

@@ -7,7 +7,7 @@ use App\Models\Korisnik;
 
 class KorisnikController extends Controller
 {
-    //
+
     public function addKorisnika()
     {
         return view("welcome");
@@ -15,7 +15,6 @@ class KorisnikController extends Controller
 
     public function selectData()
     {
-
         $korisnici = Korisnik::all();
         return view("list-data", [
             "korisnici" => $korisnici
@@ -36,9 +35,9 @@ class KorisnikController extends Controller
         $korisnik_obj->save();
 
         //flash msg
-        $request->session()->flash("success", "Korisnik je kreiran uspesno!");
+        $request->session()->flash("success");
 
         //redirect
-        return redirect("add-korisnika");
+        return redirect("dashboard");
     }
 }
